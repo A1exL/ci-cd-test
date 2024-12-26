@@ -5,7 +5,6 @@ COPY target/*.jar spring-boot-app.jar
 RUN java -Djarmode=tools -jar spring-boot-app.jar extract --layers --launcher --destination layers-dir
 
 FROM eclipse-temurin:17-jdk-alpine
-LABEL org.opencontainers.image.description="Some Custom Description"
 WORKDIR /home/spring-boot-app
 
 EXPOSE 8080

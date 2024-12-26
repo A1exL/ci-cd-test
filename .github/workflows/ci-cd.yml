@@ -42,11 +42,13 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ghcr.io/${{ github.repository }}
+        # github.repository = a1exl/ci-cd-test
 
+    # https://github.com/users/A1exL/packages/container/ci-cd-test/settings - Danger Zone -> Change package visibility
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: ghcr.io/a1exl/ci-cd-test:v112
         labels: ${{ steps.meta.outputs.labels }}

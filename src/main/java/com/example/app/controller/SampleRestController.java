@@ -16,7 +16,7 @@ public class SampleRestController {
 
     @GetMapping
     public Map<Object, Object> testMethod() {
-        log.info("some testMethod 44");
+        log.info("some testMethod 55");
         return Map.of("external value", externalConfigValue,
                 "hello", "world",
                 "i2", 1247,

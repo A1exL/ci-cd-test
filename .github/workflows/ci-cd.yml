@@ -39,20 +39,9 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Extract metadata (tags, labels) for Docker
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        labels: |
-          org.opencontainers.image.title=MyCustomTitle
-          org.opencontainers.image.description=Another description
-        images: ghcr.io/${{ github.repository }}
-        tags: type=sha
+    - name: Docker build
+      run: docker build -t ghcr.io/${{ github.repository }}:xxx1 .
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v6
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+    - name: Docker push
+      run: docker push ghcr.io/${{ github.repository }}:xxx1 .
+

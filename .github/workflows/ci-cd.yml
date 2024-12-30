@@ -39,9 +39,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Docker build
-      run: docker build -t ghcr.io/a1exl/ci-cd-test:xxx2 .
+    - name: Docker build and push
+      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:xxx3 .
 
-    - name: Docker push
-      run: docker push ghcr.io/a1exl/ci-cd-test:xxx2
 

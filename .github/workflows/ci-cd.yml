@@ -40,9 +40,11 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: ls -la
-      run: ls -la
+      run: |
+        touch -a -m -t 201512180130.09 HELP.md
+        ls -la
 
-#    - name: Docker build and push
-#      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:x${{ github.run_number }} .
+    - name: Docker build and push
+      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:q${{ github.run_number }} .
 
 

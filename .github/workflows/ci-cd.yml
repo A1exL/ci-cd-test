@@ -40,6 +40,6 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Docker build and push
-      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:xxx5 .
+      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:x${{ github.run_number }} .
 
 

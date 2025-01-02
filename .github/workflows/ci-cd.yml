@@ -32,11 +32,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B clean package
 
-
-
-#    - name: Docker build and push
-#      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:r${{ github.run_number }} .
-
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
@@ -64,6 +59,7 @@ jobs:
       with:
         context: .
         push: true
+        # provenance: false fixes https://github.com/docker/build-push-action/issues/820
         provenance: false
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}

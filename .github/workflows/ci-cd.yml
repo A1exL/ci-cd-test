@@ -56,7 +56,6 @@ jobs:
           org.opencontainers.image.description=Another description
         images: ghcr.io/${{ github.repository }}
         tags: |
-          type=schedule,pattern={{date 'YYYYMMDD'}}
           type=raw,value=run-${{ github.run_number }}
           type=sha
 

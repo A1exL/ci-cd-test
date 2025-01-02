@@ -39,13 +39,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: ls -la
-      run: |
-        sha256sum HELP.md
-        touch -a -m -t 201512180130.09 HELP.md
-        sha256sum HELP.md
-        ls -la
-
     - name: Docker build and push
       run: docker build --cache-from=type=gha --cache-to=type=gha --push -t ghcr.io/a1exl/ci-cd-test:r${{ github.run_number }} .
 

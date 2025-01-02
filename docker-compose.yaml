@@ -1,0 +1,13 @@
+name: the-app
+services:
+  backend:
+    image: ghcr.io/a1exl/ci-cd-test:run-48
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./volumes/log:/home/spring-boot-app/log
+      - ./volumes/config:/home/spring-boot-app/config
+    healthcheck:
+      test: "wget -q -O - localhost:8080"
+      interval: 3s
+      retries: 5

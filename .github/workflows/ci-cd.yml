@@ -52,12 +52,13 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         labels: |
-          description="Desc"
-          maintainer="me@admin.com"
-          org.opencontainers.image.title="My Custom Title"
-          org.opencontainers.image.description="Another description"
+          org.opencontainers.image.title=My Custom Title
+          org.opencontainers.image.description=Another description
         images: ghcr.io/${{ github.repository }}
-        tags: type=sha
+        tags: |
+          type=schedule,pattern={{date 'MMMDD-HHmm'}}
+          type=raw,value=run-${{ github.run_number }}
+          type=sha
 
     - name: Build and push
       uses: docker/build-push-action@v6

@@ -39,7 +39,16 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Docker build and push
-      run: docker build --cache-from=type=gha --cache-to=type=gha --push -t ghcr.io/a1exl/ci-cd-test:r${{ github.run_number }} .
+#    - name: Docker build and push
+#      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:r${{ github.run_number }} .
+
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        push: true
+        tags: m${{ github.run_number }}
+        cache-from: type=gha
+        cache-to: type=gha
 
 

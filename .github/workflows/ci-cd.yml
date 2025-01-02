@@ -52,8 +52,10 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         labels: |
-          org.opencontainers.image.title=MyCustomTitle
-          org.opencontainers.image.description=Another description
+          description="Desc"
+          maintainer="me@admin.com"
+          org.opencontainers.image.title="My Custom Title"
+          org.opencontainers.image.description="Another description"
         images: ghcr.io/${{ github.repository }}
         tags: type=sha
 

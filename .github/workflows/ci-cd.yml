@@ -42,6 +42,9 @@ jobs:
 #    - name: Docker build and push
 #      run: docker build --push -t ghcr.io/a1exl/ci-cd-test:r${{ github.run_number }} .
 
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
